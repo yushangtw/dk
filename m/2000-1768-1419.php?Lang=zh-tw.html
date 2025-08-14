@@ -692,36 +692,31 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 $(document).ready(function(){
-var a = [];
-a.push({name:'Cg',value:1419});
-var option = {
-	pageMode:'2',
-	currentPage:1,
-	flag:0,
-	over:0,
-	url:'/bin/index.php?Plugin=mec&Action=mobile_meccg',
-	urlPrefix:  'http://www.yu-shang.com.tw/m/2000-1768-1419-PAGE.php?Lang=zh-tw',
-	totalPage:3,
-	Op:'getpartlist',
-	param:a,
-	pageListObj:$("#pageptlist"),
-	nextPageObj:$("#_cgptlist_next_page")
-}
-var cgptlist = new HvPagelist();
-cgptlist.init(option);
+  var a = [];
+  a.push({name:'Cg',value:1419});
 
+  var option = {
+    pageMode:'2',
+    currentPage:1,
+    flag:0,
+    over:0,
+    // 從 m/ 回到上一層再進 bin/
+    url: '../bin/index.php?Plugin=mec&Action=mobile_meccg',
+    // 目標頁面就在 m/ 內
+    urlPrefix: './2000-1768-1419-PAGE.php?Lang=zh-tw',
+    totalPage:3,
+    Op:'getpartlist',
+    param:a,
+    pageListObj: $("#pageptlist"),
+    nextPageObj: $("#_cgptlist_next_page")
+  };
 
-$("#_cgptlist_gonext").click(function(){
-	cgptlist.goNextPage();
-});
-$("#_cgptlist_goprev").click(function(){
-	cgptlist.goPrePage();
-});
-$("#_cgptlist_select-page").change(function(){
-	cgptlist.goPage(this.value);
-});
+  var cgptlist = new HvPagelist();
+  cgptlist.init(option);
 
-
+  $("#_cgptlist_gonext").on("click", function(){ cgptlist.goNextPage(); });
+  $("#_cgptlist_goprev").on("click", function(){ cgptlist.goPrePage(); });
+  $("#_cgptlist_select-page").on("change", function(){ cgptlist.goPage(this.value); });
 });
 </script>
 
@@ -981,6 +976,7 @@ $("#_cgptlist_select-page").change(function(){
 			</object></span>
 				<script> $("#a1245197fa94adb3a02ea399a08a75cf8_src_voiceHtml").show();</script>
 				<noscript>2670</noscript>
+
 			</span></AuthImgReplaceTag>
          </div>
       </div>
